@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:PanCake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:updown="clr-namespace:Syncfusion.SfNumericUpDown.XForms;assembly=Syncfusion.SfNumericUpDown.XForms"    x:Class="OnlineStoreApp.Views.DetailPage">
+    <ContentPage.Content>
+        <!-- Main layout-->
+        <Grid RowDefinitions="Auto,*" BackgroundColor="White" RowSpacing="0">
+            <!-- 1. Main picture--> 
+            <PanCake:PancakeView Grid.Row="0" CornerRadius="0,0,0,60">
+               <Grid ColumnDefinitions="*,*">
+                    <Image Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="280" Aspect="AspectFill" Source="MainImage"/>
+                    <Button Grid.Column="0" ImageSource="Arrow" BackgroundColor="Transparent" Margin="20,40" VerticalOptions="Start" HorizontalOptions="Start" HeightRequest="50" WidthRequest="50" CornerRadius="14" BorderColor="Silver" BorderWidth="1"/>
+                    <Button Grid.Column="1" ImageSource="Points" BackgroundColor="Transparent" Margin="20,40" VerticalOptions="Start" HorizontalOptions="End" HeightRequest="50" WidthRequest="50" CornerRadius="14" BorderColor="Silver" BorderWidth="1"/>
+                </Grid> 
+            </PanCake:PancakeView>
+            <!--2. Detail information-->
+            <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" BackgroundColor="#c6dad4">
+                <PanCake:PancakeView CornerRadius="60,0,0,0">
+                   <Grid RowDefinitions="*" BackgroundColor="White">
+                        <ScrollView Grid.Row="0" Padding="0,0,0,90" VerticalScrollBarVisibility="Never">
+                            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,*" Padding="30">
+                                <!--Title-->
+                                <Label Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2"  FontSize="21" FontAttributes="Bold" Text="Wired On-Ear Headphones" TextColor="#665a5a"/>
+
+                                <!--Counter & price-->
+                                <updown:SfNumericUpDown Grid.Row="1" Grid.Column="0" Value="3" HeightRequest="50" Margin="0,15" BackgroundColor="#f6e1e1" SpinButtonAlignment="Both" TextAlignment="Center">
+                                    <updown:SfNumericUpDown.IncrementButtonSettings>
+                                    <updown:UpDownButtonSettings BackgroundColor="#f8e7e9"/>
+                                    </updown:SfNumericUpDown.IncrementButtonSettings>
+                                    <updown:SfNumericUpDown.DecrementButtonSettings>
+                                    <updown:UpDownButtonSettings BackgroundColor="#f8e7e9"/>
+                                    </updown:SfNumericUpDown.DecrementButtonSettings>
+                                </updown:SfNumericUpDown>
+                                <Label Grid.Row="1" Grid.Column="1" VerticalTextAlignment="Center" HorizontalTextAlignment="End">
+                                   <Label.FormattedText>
+                                        <FormattedString>
+                                           <Span Text="$" FontSize="18"/>
+                                           <Span Text="26." FontSize="25" FontAttributes="Bold" />
+                                           <Span Text="99" FontSize="18" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                 <!--Description-->
+                                <Label Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="2" TextColor="Silver" LineHeight="1.2" Text="Maximizing your personal audio experience has never been easier than with Our Monitor headphones. Built with combat and goodness in mind, there's no need to compromises."/>
+                                <!--Related Products details-->
+                                <Label Grid.Row="3" Grid.Column="0" FontAttributes="Bold" Text="Related Products" TextColor="#665a5a" Margin="0,20,0,15"/>
+                                <Label Grid.Row="3" Grid.Column="1" Text="View all"  HorizontalOptions="End"  TextColor="#d4acaa" Margin="0,20,0,15"/>
+
+                                <!--Related Products list--> 
+                                 <CollectionView Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalScrollBarVisibility="Never" 
+                                       ItemsSource="{Binding products}"
+                                       ItemsLayout="HorizontalList"
+                                       HeightRequest="95">
+                                       <CollectionView.ItemTemplate> 
+                                          <DataTemplate>
+                                             <Grid Padding="1,0,5,10">
+                                                <Frame Grid.Column="0" BorderColor="Transparent" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="110" HasShadow="False"  CornerRadius="10" Padding="0" IsClippedToBounds="True">
+                                                     <Image Source="{Binding Picture}" Aspect="Fill" />
+                                                </Frame>
+                                             </Grid>
+                                          </DataTemplate>
+                                       </CollectionView.ItemTemplate>
+                                   </CollectionView>
+                                <!-- Main features & description-->
+                                <Label Grid.Row="5" Grid.Column="0" FontAttributes="Bold" Text="Main Features" TextColor="#665a5a"/>
+                                <Label Grid.Row="6"  Grid.Column="0" Grid.ColumnSpan="2" TextColor="Silver" LineHeight="1.5" Text="Tangle-free - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "/>
+
+
+                            </Grid>
+                        </ScrollView>
+                        <!--Float Button-->
+                       <Button Grid.Row="0" Text="+" FontAttributes="Bold" FontSize="35" BackgroundColor="#fabfbc" BorderRadius="23" TextColor="White" HorizontalOptions="Center" WidthRequest="75" HeightRequest="75" Margin="0,0,0,22" VerticalOptions="End"/>
+
+                   </Grid>
+                </PanCake:PancakeView>
+            </Grid> 
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
